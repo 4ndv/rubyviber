@@ -57,7 +57,7 @@ Note that in case of errors, exception will be raised, so don't forget to handle
 Rubyviber Client has some options you can set, here's full list:
 
 ```ruby
-client = Rubyviber::Client.new 'TOKENHERE', adapter: Faraday.default_adapter, logging: true, raise_errors: true
+client = Rubyviber::Client.new 'TOKENHERE', adapter: Faraday.default_adapter, logging: true, raise_errors: true, log_bodies: false
 ```
 
 Where:
@@ -65,6 +65,8 @@ Where:
 `adapter` - faraday adapter, look into faraday docs for more of them
 
 `logging` - true/false, enables/disables logging
+
+`log_bodies` - true/false, enables/disables responce bodies logging. Works only if `logging: true`
 
 `raise_errors` - true/false, enables/disables error raising. If you disable this, you can check successfullness of request by verifying `ok` field in the parsed body
 

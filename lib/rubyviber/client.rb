@@ -3,12 +3,12 @@ require 'faraday_middleware'
 
 module Rubyviber
   class Client
-    def initialize token, adapter: Faraday.default_adapter, logging: true, raise_errors: true
+    def initialize token, adapter: Faraday.default_adapter, logging: true, raise_errors: true, log_bodies: false
       @faraday = Faraday.new url: "https://chatapi.viber.com/pa/", headers: { "X-Viber-Auth-Token": token } do |faraday|
         faraday.request :multipart
 
         # Logging
-        faraday.response :logger if logging
+        faraday.response(:logger, bodies: log_bodies) if logging
 
         # Json encoder
         faraday.use FaradayMiddleware::EncodeJson
