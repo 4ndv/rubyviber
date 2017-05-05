@@ -8,7 +8,7 @@ module Rubyviber
         faraday.request :multipart
 
         # Logging
-        faraday.response(:logger, bodies: log_bodies) if logging
+        faraday.response(:logger, ::Logger.new(STDOUT), bodies: log_bodies) if logging
 
         # Json encoder
         faraday.use FaradayMiddleware::EncodeJson
