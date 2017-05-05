@@ -1,5 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
+require 'logger'
 
 module Rubyviber
   class Client
